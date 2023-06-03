@@ -47,6 +47,10 @@ import NewDrugView from "../views/admin/drug/NewView.vue";
 import EditDrugView from "../views/admin/drug/EditView.vue";
 import DrugView from "../views/admin/drug/View.vue";
 
+import NewDoctorSpecializedView from "../views/admin/doctor_specialized/NewView.vue";
+import EditDoctorSpecializedView from "../views/admin/doctor_specialized/EditView.vue";
+import DoctorSpecializedView from "../views/admin/doctor_specialized/View.vue";
+
 import RecruiterNewPostView from "@/views/recruiter/post/NewView.vue";
 import RecruiterEditPostView from "@/views/recruiter/post/EditView.vue";
 import RecruiterPostView from "@/views/recruiter/post/View.vue";
@@ -324,6 +328,21 @@ const router = createRouter({
           path: "drugs/:id/edit",
           name: "drug-edit",
           component: EditDrugView,
+        },
+        {
+          path: "doctor-specializations",
+          name: "doctor-specialization-index",
+          component: DoctorSpecializedView,
+        },
+        {
+          path: "doctor-specializations/new",
+          name: "doctor-specialization-new",
+          component: NewDoctorSpecializedView,
+        },
+        {
+          path: "doctor-specializations/:id/edit",
+          name: "doctor-specialization-edit",
+          component: EditDoctorSpecializedView,
         },
       ],
     },

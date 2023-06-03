@@ -17,7 +17,7 @@ routes.use('/answers', answers);
 routes.use('/posts', posts);
 routes.use('/recruitments', recruitments);
 routes.use('/users', users);
-routes.use('/doc-specialized', docSpecialized);
+routes.use('/doctor-specializations', docSpecialized);
 routes.use('/drugs', drugs);
 
 module.exports = routes;
