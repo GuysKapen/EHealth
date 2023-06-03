@@ -32,7 +32,8 @@ exports.read = function (req, res) {
 };
 
 exports.update = function (req, res) {
-  DoctorSpecialized.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, function (err, item) {
+  const attrs = _.pick(req.body, "name");
+  DoctorSpecialized.findOneAndUpdate({ _id: req.params.id }, attrs, { new: true }, function (err, item) {
     if (err) return response.sendBadRequest(res, err);
     res.json(item);
   });
