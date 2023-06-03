@@ -43,6 +43,10 @@ import AdminDashboardView from "@/views/admin/dashboard/View.vue";
 
 import AdminUsersView from "@/views/admin/user/View.vue";
 
+import NewDrugView from "../views/admin/drug/NewView.vue";
+import EditDrugView from "../views/admin/drug/EditView.vue";
+import DrugView from "../views/admin/drug/View.vue";
+
 import RecruiterNewPostView from "@/views/recruiter/post/NewView.vue";
 import RecruiterEditPostView from "@/views/recruiter/post/EditView.vue";
 import RecruiterPostView from "@/views/recruiter/post/View.vue";
@@ -305,6 +309,21 @@ const router = createRouter({
           path: "answers/:postId",
           name: "answer-of-post",
           component: AnswerOfView,
+        },
+        {
+          path: "drugs",
+          name: "drug-index",
+          component: DrugView,
+        },
+        {
+          path: "drugs/new",
+          name: "drug-new",
+          component: NewDrugView,
+        },
+        {
+          path: "drugs/:id/edit",
+          name: "drug-edit",
+          component: EditDrugView,
         },
       ],
     },

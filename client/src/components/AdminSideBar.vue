@@ -108,8 +108,8 @@
           </div>
 
           <div class="flex items-start tab-panel active">
-            <router-link tag="div" class-active="active" class="flex items-start tab-panel"
-              :to="{ name: 'field-index' }" exact>
+            <router-link tag="div" class-active="active" class="flex items-start tab-panel" :to="{ name: 'field-index' }"
+              exact>
               <div class="
                   bg-white
                   rounded-lg
@@ -224,6 +224,28 @@
             </router-link>
           </div>
 
+          <div class="flex items-start tab-panel">
+            <router-link :to="{ name: 'drug-index' }" class="flex items-start">
+              <div class="
+                  bg-white
+                  rounded-lg
+                  flex
+                  items-center
+                  justify-center
+                  ml-2
+                  w-6
+                  h-6
+                  flex-shrink-0
+                  border border-gray-100
+                ">
+                <span class="material-symbols-outlined text-gray-300 text-sm">pill</span>
+              </div>
+
+              <div class="ml-3 text-sm">
+                <p class="text-gray-500">Drugs</p>
+              </div>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
