@@ -26,6 +26,12 @@ import Apply from './models/apply';
 import Conversation from './models/conversation';
 import DoctorSpecialized from './models/doctor_specialized';
 import Drug from './models/drug';
+import ChiefComplaint from './models/chief_complaint';
+import Comorbidity from './models/comorbidity';
+import ProvisionalDiagnose from './models/provisional_diagnose';
+import DifferentialDiagnose from './models/differential_diagnose';
+import ClinicalDiagnose from './models/clinical_diagnose';
+import Investigation from './models/investigation';
 
 import config from 'config';
 import db from './db/db';
