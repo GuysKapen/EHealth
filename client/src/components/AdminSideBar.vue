@@ -213,6 +213,120 @@
               </div>
             </router-link>
           </div>
+
+          <div class="flex items-start tab-panel">
+            <router-link
+              :to="{ name: 'chief-complaint-index' }"
+              class="flex items-start"
+            >
+              <div
+                class="bg-white rounded-lg flex items-center justify-center ml-2 w-6 h-6 flex-shrink-0 border border-gray-100"
+              >
+                <span class="material-symbols-outlined text-gray-300 text-sm"
+                  >monitor_heart</span
+                >
+              </div>
+
+              <div class="ml-3 text-sm">
+                <p class="text-gray-500">Chief Complaint (C/C)</p>
+              </div>
+            </router-link>
+          </div>
+
+          <div class="flex items-start tab-panel">
+            <router-link
+              :to="{ name: 'comorbidity-index' }"
+              class="flex items-start"
+            >
+              <div
+                class="bg-white rounded-lg flex items-center justify-center ml-2 w-6 h-6 flex-shrink-0 border border-gray-100"
+              >
+                <span class="material-symbols-outlined text-gray-300 text-sm"
+                  >sick</span
+                >
+              </div>
+
+              <div class="ml-3 text-sm">
+                <p class="text-gray-500">Comorbidities</p>
+              </div>
+            </router-link>
+          </div>
+
+          <div class="flex items-start tab-panel">
+            <router-link
+              :to="{ name: 'provisional-diagnose-index' }"
+              class="flex items-start"
+            >
+              <div
+                class="bg-white rounded-lg flex items-center justify-center ml-2 w-6 h-6 flex-shrink-0 border border-gray-100"
+              >
+                <span class="material-symbols-outlined text-gray-300 text-sm"
+                  >insights</span
+                >
+              </div>
+
+              <div class="ml-3 text-sm">
+                <p class="text-gray-500">Provisional diagnosis (P/D)</p>
+              </div>
+            </router-link>
+          </div>
+
+          <div class="flex items-start tab-panel">
+            <router-link
+              :to="{ name: 'differential-diagnose-index' }"
+              class="flex items-start"
+            >
+              <div
+                class="bg-white rounded-lg flex items-center justify-center ml-2 w-6 h-6 flex-shrink-0 border border-gray-100"
+              >
+                <span class="material-symbols-outlined text-gray-300 text-sm"
+                  >scatter_plot</span
+                >
+              </div>
+
+              <div class="ml-3 text-sm">
+                <p class="text-gray-500">Differential diagnosis (D/D)</p>
+              </div>
+            </router-link>
+          </div>
+
+          <div class="flex items-start tab-panel">
+            <router-link
+              :to="{ name: 'clinical-diagnose-index' }"
+              class="flex items-start"
+            >
+              <div
+                class="bg-white rounded-lg flex items-center justify-center ml-2 w-6 h-6 flex-shrink-0 border border-gray-100"
+              >
+                <span class="material-symbols-outlined text-gray-300 text-sm"
+                  >monitor_weight</span
+                >
+              </div>
+
+              <div class="ml-3 text-sm">
+                <p class="text-gray-500">Clinical diagnosis (C/D)</p>
+              </div>
+            </router-link>
+          </div>
+
+          <div class="flex items-start tab-panel">
+            <router-link
+              :to="{ name: 'investigation-index' }"
+              class="flex items-start"
+            >
+              <div
+                class="bg-white rounded-lg flex items-center justify-center ml-2 w-6 h-6 flex-shrink-0 border border-gray-100"
+              >
+                <span class="material-symbols-outlined text-gray-300 text-sm"
+                  >health_and_safety</span
+                >
+              </div>
+
+              <div class="ml-3 text-sm">
+                <p class="text-gray-500">Investigations</p>
+              </div>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
