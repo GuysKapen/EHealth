@@ -27,9 +27,9 @@ routes.use('/doctor-specializations', docSpecialized);
 routes.use('/drugs', drugs);
 routes.use('/chief-complaint', chiefComplaint);
 routes.use('/comorbidities', comorbidities);
-routes.use('/provisional_diagnosis', provisionalDiagnosis);
-routes.use('/differential_diagnosis', differentialDiagnosis);
-routes.use('/clinical_diagnosis', clinicalDiagnosis);
+routes.use('/provisional-diagnosis', provisionalDiagnosis);
+routes.use('/differential-diagnosis', differentialDiagnosis);
+routes.use('/clinical-diagnosis', clinicalDiagnosis);
 routes.use('/investigations', investigations);
 
 module.exports = routes;
