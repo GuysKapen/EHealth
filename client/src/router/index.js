@@ -51,6 +51,30 @@ import NewDoctorSpecializedView from "../views/admin/doctor_specialized/NewView.
 import EditDoctorSpecializedView from "../views/admin/doctor_specialized/EditView.vue";
 import DoctorSpecializedView from "../views/admin/doctor_specialized/View.vue";
 
+import NewChiefComplaintView from "../views/admin/chief_complaint/NewView.vue";
+import EditChiefComplaintView from "../views/admin/chief_complaint/EditView.vue";
+import ChiefComplaintView from "../views/admin/chief_complaint/View.vue";
+
+import NewComorbidityView from "../views/admin/comorbidity/NewView.vue";
+import EditComorbidityView from "../views/admin/comorbidity/EditView.vue";
+import ComorbidityView from "../views/admin/comorbidity/View.vue";
+
+import NewProvisionalDiagnoseView from "../views/admin/provisional_diagnose/NewView.vue"
+import EditProvisionalDiagnoseView from "../views/admin/provisional_diagnose/EditView.vue";
+import ProvisionalDiagnoseView from "../views/admin/provisional_diagnose/View.vue";
+
+import NewDifferentialDiagnoseView from "../views/admin/differential_diagnose/NewView.vue"
+import EditDifferentialDiagnoseView from "../views/admin/differential_diagnose/EditView.vue";
+import DifferentialDiagnoseView from "../views/admin/differential_diagnose/View.vue";
+
+import NewClinicalDiagnoseView from "../views/admin/clinical_diagnose/NewView.vue";
+import EditClinicalDiagnoseView from "../views/admin/clinical_diagnose/EditView.vue";
+import ClinicalDiagnoseView from "../views/admin/clinical_diagnose/View.vue";
+
+import NewInvestigationView from "../views/admin/investigation/NewView.vue";
+import EditInvestigationView from "../views/admin/investigation/EditView.vue";
+import InvestigationView from "../views/admin/investigation/View.vue";
+
 import RecruiterNewPostView from "@/views/recruiter/post/NewView.vue";
 import RecruiterEditPostView from "@/views/recruiter/post/EditView.vue";
 import RecruiterPostView from "@/views/recruiter/post/View.vue";
@@ -343,6 +367,96 @@ const router = createRouter({
           path: "doctor-specializations/:id/edit",
           name: "doctor-specialization-edit",
           component: EditDoctorSpecializedView,
+        },
+        {
+          path: "chief-complaint",
+          name: "chief-complaint-index",
+          component: ChiefComplaintView,
+        },
+        {
+          path: "chief-complaint/new",
+          name: "chief-complaint-new",
+          component: NewChiefComplaintView,
+        },
+        {
+          path: "chief-complaint/:id/edit",
+          name: "chief-complaint-edit",
+          component: EditChiefComplaintView,
+        },
+        {
+          path: "comorbidities",
+          name: "comorbidity-index",
+          component: ComorbidityView,
+        },
+        {
+          path: "comorbidities/new",
+          name: "comorbidity-new",
+          component: NewComorbidityView,
+        },
+        {
+          path: "comorbidities/:id/edit",
+          name: "comorbidity-edit",
+          component: EditComorbidityView,
+        },
+        {
+          path: "provisional-diagnosis",
+          name: "provisional-diagnose-index",
+          component: ProvisionalDiagnoseView,
+        },
+        {
+          path: "provisional-diagnosis/new",
+          name: "provisional-diagnose-new",
+          component: NewProvisionalDiagnoseView,
+        },
+        {
+          path: "provisional-diagnosis/:id/edit",
+          name: "provisional-diagnose-edit",
+          component: EditProvisionalDiagnoseView,
+        },
+        {
+          path: "differential-diagnosis",
+          name: "differential-diagnose-index",
+          component: DifferentialDiagnoseView,
+        },
+        {
+          path: "differential-diagnosis/new",
+          name: "differential-diagnose-new",
+          component: NewDifferentialDiagnoseView,
+        },
+        {
+          path: "differential-diagnosis/:id/edit",
+          name: "differential-diagnose-edit",
+          component: EditDifferentialDiagnoseView,
+        },
+        {
+          path: "clinical-diagnosis",
+          name: "clinical-diagnose-index",
+          component: ClinicalDiagnoseView,
+        },
+        {
+          path: "clinical-diagnosis/new",
+          name: "clinical-diagnose-new",
+          component: NewClinicalDiagnoseView,
+        },
+        {
+          path: "clinical-diagnosis/:id/edit",
+          name: "clinical-diagnose-edit",
+          component: EditClinicalDiagnoseView,
+        },
+        {
+          path: "investigations",
+          name: "investigation-index",
+          component: InvestigationView,
+        },
+        {
+          path: "investigations/new",
+          name: "investigation-new",
+          component: NewInvestigationView,
+        },
+        {
+          path: "investigations/:id/edit",
+          name: "investigation-edit",
+          component: EditInvestigationView,
         },
       ],
     },
