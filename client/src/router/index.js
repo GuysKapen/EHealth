@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import SavedView from "@/views/SavedView.vue";
 import RecruitmentsView from "../views/RecruitmentView.vue";
+import DoctorsView from "../views/DoctorView.vue";
 import DetailView from "../views/DetailView.vue";
 import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
@@ -151,12 +152,17 @@ const router = createRouter({
       path: "/saved",
       name: "saved",
       component: SavedView,
-      beforeEnter: [isAuth]
+      beforeEnter: [isAuth],
     },
     {
       path: "/recruitments",
       name: "recruitments",
       component: RecruitmentsView,
+    },
+    {
+      path: "/doctors",
+      name: "doctors",
+      component: DoctorsView,
     },
     {
       path: "/about",

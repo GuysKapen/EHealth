@@ -10,6 +10,7 @@ const Company = mongoose.model("Company");
 const Field = mongoose.model("Field");
 const Skill = mongoose.model("Skill");
 const Recruitment = mongoose.model("Recruitment");
+const User = mongoose.model("User");
 
 exports.categories = function (req, res) {
   Category.find({}).exec(function (err, docs) {
@@ -468,4 +469,81 @@ exports.downloadRecruitment = function (req, res) {
       if (!doc.file) return
       res.download(doc.file)
     })
+};
+
+exports.doctors = async function (req, res) {
+  let query = { role: "doctor" };
+
+  const page = req.query["page"] || 1;
+  const limit = req.query["limit"] || 5;
+
+  User.paginate(
+    query,
+    {
+      limit: limit,
+      page: page,
+      sort: {
+        _id: -1
+      },
+      populate: [
+        { path: "profile" }
+      ]
+    },
+    function (err, docs) {
+      if (err) return response.sendNotFound(res);
+      res.json(docs);
+    }
+  );
+};
+
+exports.topDoctors = async function (req, res) {
+  let query = { role: "doctor" };
+
+  User.find(query)
+    .populate({
+      path: "owner",
+      populate: {
+        path: "profile",
+      },
+    })
+    .sort({ _id: "asc" })
+    .limit(6)
+    .exec(function (err, docs) {
+      if (err) return response.sendNotFound(res);
+      res.json(docs);
+    });
+};
+
+exports.doctor = function (req, res) {
+  User.findById(req.params.id)
+    .populate("profile")
+    .exec(function (err, docs) {
+      if (err) return response.sendNotFound(res);
+      res.json(docs);
+    });
+};
+
+exports.searchDoctors = async function (req, res) {
+  let query = { role: "doctor" };
+
+  const page = req.query["page"] || 1;
+  const limit = req.query["limit"] || 5;
+
+  if (req.query["name"]) {
+    query["name"] = { $regex: req.query["name"], $options: "i" };
+  }
+
+  User.paginate(
+    query,
+    {
+      limit: limit,
+      page: page,
+      populate: [
+        { path: "profile" },
+      ]
+    },
+    function (err, docs) {
+      if (err) return response.sendNotFound(res);
+      res.json(docs);
+    });
 };

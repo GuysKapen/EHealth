@@ -12,6 +12,7 @@ routes.route("/companies").get(publicC.companies);
 routes.route("/skills").get(publicC.skills);
 routes.route("/fields").get(publicC.fields);
 routes.route("/recruitments").get(publicC.recruitments);
+routes.route("/doctors").get(publicC.doctors);
 
 routes.route("/detail-companies").get(publicC.detailCompanies);
 routes.route("/detail-skills").get(publicC.detailSkills);
@@ -25,7 +26,12 @@ routes.route("/recruitments/:id/download").get(publicC.downloadRecruitment);
 
 routes.route("/top-recruitments").get(publicC.topRecruitments);
 routes.route("/top-posts").get(publicC.topPosts);
+routes.route("/top-doctors").get(publicC.topDoctors);
+
 routes.route("/search/recruitments").get(publicC.searchRecruitments);
 routes.route("/search/posts").get(publicC.searchPosts);
+routes.route("/search/doctors").get(publicC.searchDoctors);
+
+routes.route("/doctors/:id").get(publicC.doctor);
 
 module.exports = routes;
