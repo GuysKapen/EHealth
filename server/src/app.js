@@ -25,6 +25,7 @@ import RecruitmentDetail from './models/recruiment_detail';
 import Apply from './models/apply';
 import Conversation from './models/conversation';
 import DoctorSpecialized from './models/doctor_specialized';
+import DoctorDetail from './models/doctor_detail';
 import Drug from './models/drug';
 import ChiefComplaint from './models/chief_complaint';
 import Comorbidity from './models/comorbidity';

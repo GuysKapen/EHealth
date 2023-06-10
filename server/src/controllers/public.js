@@ -11,6 +11,8 @@ const Field = mongoose.model("Field");
 const Skill = mongoose.model("Skill");
 const Recruitment = mongoose.model("Recruitment");
 const User = mongoose.model("User");
+const DoctorSpecialized = mongoose.model("DoctorSpecialized");
+const DoctorDetail = mongoose.model("DoctorDetail");
 
 exports.categories = function (req, res) {
   Category.find({}).exec(function (err, docs) {
@@ -546,4 +548,16 @@ exports.searchDoctors = async function (req, res) {
       if (err) return response.sendNotFound(res);
       res.json(docs);
     });
+};
+
+exports.detailSpecializations = async function (req, res) {
+   let results = await DoctorDetail.aggregate([
+    { $group: { _id: "$specialization", count: { $sum: 1 } } },
+    { $project: { specialization: "$_id", count: 1, _id: 0 } },
+  ]).exec();
+
+  DoctorSpecialized.populate(results, { path: "specialization" }, function (err, docs) {
+    if (err) return response.sendNotFound(res);
+    res.json(docs);
+  });
 };

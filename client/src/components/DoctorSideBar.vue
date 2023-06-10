@@ -8,7 +8,7 @@
         <div class="mt-4 space-y-6">
           <div
             class="tab-panel group"
-            v-for="(obj, idx) in companies"
+            v-for="(obj, idx) in specializations"
             :key="idx"
           >
             <router-link
@@ -44,77 +44,6 @@
         </div>
       </div>
 
-      <div class="px-4 py-5 space-y-6 sm:p-6">
-        <h3 class="text-base font-medium text-gray-900">Fields recruitments</h3>
-        <div class="mt-4 space-y-6">
-          <div class="tab-panel group" v-for="(obj, idx) in fields" :key="idx">
-            <router-link
-              :to="{ name: 'recruitments', query: { fields: obj.field.slug } }"
-            >
-              <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                  <div
-                    class="bg-gray-100 rounded-lg flex items-center justify-center ml-4 w-6 h-6 flex-shrink-0 border border-gray-100"
-                  >
-                    <span
-                      class="w-[6px] h-[6px] rounded-full bg-indigo-600 border border-gray-200"
-                    ></span>
-                  </div>
-
-                  <div class="ml-3 text-sm">
-                    <p class="text-gray-500 group-hover:text-indigo-600">
-                      {{ obj.field.name }}
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class="bg-gray-100 rounded-lg flex items-center justify-center ml-4 w-6 h-6 flex-shrink-0 border border-gray-100"
-                >
-                  <span class="text-xs text-indigo-600">{{ obj.count }}</span>
-                </div>
-              </div>
-            </router-link>
-          </div>
-        </div>
-      </div>
-
-      <div class="px-4 py-5 space-y-6 sm:p-6">
-        <h3 class="text-base font-medium text-gray-900">Skills recruitments</h3>
-        <div class="mt-4 space-y-6">
-          <div class="tab-panel group" v-for="(job, idx) in skills" :key="idx">
-            <router-link
-              :to="{
-                name: 'recruitments',
-                query: { 'skills[]': job.skill.slug },
-              }"
-            >
-              <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                  <div
-                    class="bg-gray-100 rounded-lg flex items-center justify-center ml-4 w-6 h-6 flex-shrink-0 border border-gray-100"
-                  >
-                    <span
-                      class="w-[6px] h-[6px] rounded-full bg-indigo-600 border border-gray-200"
-                    ></span>
-                  </div>
-
-                  <div class="ml-3 text-sm">
-                    <p class="text-gray-500 group-hover:text-indigo-600">
-                      {{ job.skill.name }}
-                    </p>
-                  </div>
-                </div>
-                <div
-                  class="bg-gray-100 rounded-lg flex items-center justify-center ml-4 w-6 h-6 flex-shrink-0 border border-gray-100"
-                >
-                  <span class="text-xs text-indigo-600">{{ job.count }}</span>
-                </div>
-              </div>
-            </router-link>
-          </div>
-        </div>
-      </div>
-
       <div class="px-4 py-3 sm:px-6 text-center w-full">
         <button
           type="submit"
@@ -134,17 +63,11 @@ import axios from "axios";
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 export default {
-  data: () => ({ companies: [], skills: [], fields: [] }),
+  data: () => ({ specializations: [], skills: [], fields: [] }),
   mounted() {
-    // axios.get(`${serverUrl}/detail-companies`).then((res) => {
-    //   this.companies = res.data;
-    // });
-    // axios.get(`${serverUrl}/detail-skills`).then((res) => {
-    //   this.skills = res.data;
-    // });
-    // axios.get(`${serverUrl}/detail-fields`).then((res) => {
-    //   this.fields = res.data;
-    // });
+    axios.get(`${serverUrl}/specializations`).then((res) => {
+      this.specializations = res.data;
+    });
   },
 };
 </script>

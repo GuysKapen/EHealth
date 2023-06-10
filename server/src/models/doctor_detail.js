@@ -15,6 +15,6 @@ const DoctorDetailSchema = new Schema({
 
 DoctorDetailSchema.plugin(mongoosePaginate);
 
-const Field = mongoose.model("Field", DoctorDetailSchema)
+const Field = mongoose.model("DoctorDetail", DoctorDetailSchema)
 
 export default Field

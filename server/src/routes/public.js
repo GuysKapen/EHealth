@@ -18,6 +18,7 @@ routes.route("/detail-companies").get(publicC.detailCompanies);
 routes.route("/detail-skills").get(publicC.detailSkills);
 routes.route("/detail-fields").get(publicC.detailFields);
 routes.route("/detail-categories").get(publicC.detailCategories);
+routes.route("/detail-specializations").get(publicC.detailSpecializations);
 
 routes.route("/posts/:id").get(publicC.post);
 
