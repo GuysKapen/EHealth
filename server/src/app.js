@@ -33,6 +33,7 @@ import ProvisionalDiagnose from './models/provisional_diagnose';
 import DifferentialDiagnose from './models/differential_diagnose';
 import ClinicalDiagnose from './models/clinical_diagnose';
 import Investigation from './models/investigation';
+import Appointment from './models/appointment';
 
 import config from 'config';
 import db from './db/db';

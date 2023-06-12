@@ -89,6 +89,9 @@ import RecruiterDashboardView from "@/views/recruiter/dashboard/View.vue";
 
 import RecruiterApplyView from "@/views/recruiter/apply/View.vue";
 
+import DoctorView from "@/views/doctor/View.vue";
+import DoctorAppointmentView from "@/views/doctor/appointment/View.vue";
+
 import UserView from "@/views/user/View.vue";
 import UserPostView from "@/views/user/post/View.vue";
 import UserEditPostView from "@/views/user/post/EditView.vue";
@@ -135,6 +138,19 @@ function isRecruiter() {
     (authStore.user.role !== "recruiter" && authStore.user.role !== "admin")
   ) {
     createToast("Please login to recruiter account", { type: "info" });
+    return "/login";
+  }
+  return true;
+}
+
+function isDoctor() {
+  const authStore = useAuthStore();
+  if (
+    authStore.token == null ||
+    authStore.user == null ||
+    (authStore.user.role !== "doctor" && authStore.user.role !== "admin")
+  ) {
+    createToast("Please login to doctor account", { type: "info" });
     return "/login";
   }
   return true;
@@ -511,6 +527,19 @@ const router = createRouter({
           path: "applies",
           name: "recruiter-apply-index",
           component: RecruiterApplyView,
+        },
+      ],
+    },
+    {
+      path: "/doctor",
+      name: "doctor",
+      component: DoctorView,
+      beforeEnter: [isDoctor],
+      children: [
+        {
+          path: "appointments",
+          name: "doctor-appointment-index",
+          component: DoctorAppointmentView,
         },
       ],
     },
