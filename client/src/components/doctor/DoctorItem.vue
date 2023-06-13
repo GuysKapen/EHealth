@@ -7,44 +7,51 @@ const serverUrl = import.meta.env.VITE_SERVER_URL;
   <div
     class="flex flex-wrap bg-white rounded-md text-black cursor-pointer m-4 p-3 justify-center hover:shadow-md"
   >
-    <div class="flex justify-center w-full aspect-[1/1] relative">
-      <img
-        class="w-full h-full rounded-sm object-cover"
-        :src="imgUrlFor(serverUrl, doctor.profile?.cover, images.avatar)"
-        alt="{work.title}"
-      />
-
-      <motion.div class="app__work-hover app__flex">
-        <a href="{work.projectLink}" target="_blank" rel="noreferrer">
-          <div class="app__flex">
-            <AiFillEye />
-          </div>
-        </a>
-
-        <a href="{work.codeLink}" target="_blank" rel="noreferrer">
-          <motion.div class="app__flex">
-            <AiFillGithub />
-          </motion.div>
-        </a>
-      </motion.div>
-    </div>
-
-    <div
-      class="flex justify-center items-center p-2 w-full relative flex-col app__flex"
+    <router-link
+      class="hover:text-indigo-600"
+      class-active="active"
+      :to="`/doctors/${doctor._id}`"
+      exact
     >
-      <h4 class="text-base font-extrabold text-left">{{ doctor.name }}</h4>
-      <p class="text-sm text-gray-600 leading-6 mt-2 text-left">
-        {{ truncate(doctor?.profile?.about, 100) }}
-      </p>
+      <div class="flex justify-center w-full aspect-[1/1] relative">
+        <img
+          class="w-full h-full rounded-sm object-cover"
+          :src="imgUrlFor(serverUrl, doctor.profile?.cover, images.avatar)"
+          alt="{work.title}"
+        />
+
+        <motion.div class="app__work-hover app__flex">
+          <a href="{work.projectLink}" target="_blank" rel="noreferrer">
+            <div class="app__flex">
+              <AiFillEye />
+            </div>
+          </a>
+
+          <a href="{work.codeLink}" target="_blank" rel="noreferrer">
+            <motion.div class="app__flex">
+              <AiFillGithub />
+            </motion.div>
+          </a>
+        </motion.div>
+      </div>
 
       <div
-        class="absolute px-6 py-1 rounded-lg bg-white top-[-28px] flex justify-center items-center"
+        class="flex justify-center items-center p-2 w-full relative flex-col app__flex"
       >
-        <p class="text-sm text-gray-600 leading-6 text-left">
-          {{ doctor.name }}
+        <h4 class="text-base font-extrabold text-left">{{ doctor.name }}</h4>
+        <p class="text-sm text-gray-600 leading-6 mt-2 text-left">
+          {{ truncate(doctor?.profile?.about, 100) }}
         </p>
+
+        <div
+          class="absolute px-6 py-1 rounded-lg bg-white top-[-28px] flex justify-center items-center"
+        >
+          <p class="text-sm text-gray-600 leading-6 text-left">
+            {{ doctor.name }}
+          </p>
+        </div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
