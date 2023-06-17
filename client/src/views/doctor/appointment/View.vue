@@ -46,7 +46,7 @@ import moment from "moment";
                             scope="col"
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
                           >
-                            Applicant
+                            Doctor
                           </th>
                           <th
                             scope="col"
@@ -58,7 +58,7 @@ import moment from "moment";
                             scope="col"
                             class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
                           >
-                            Phone
+                            Patient
                           </th>
                           <th
                             scope="col"
@@ -75,31 +75,27 @@ import moment from "moment";
                         </tr>
                       </thead>
                       <tbody class="bg-white divide-y divide-gray-200">
-                        <tr v-for="(apply, idx) in appointments" :key="idx">
+                        <tr
+                          v-for="(appointment, idx) in appointments"
+                          :key="idx"
+                        >
                           <td class="text-sm font-medium text-gray-900 px-6">
                             {{ idx + 1 }}
                           </td>
                           <td
                             class="text-sm font-medium text-gray-900 px-6 capitalize"
                           >
-                            {{ apply.owner.name }}
+                            {{ appointment?.doctor?.name }}
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap">
                             <span
-                              v-if="apply.status"
-                              class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                              class="px-2 capitalize inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
                             >
-                              Approved
-                            </span>
-                            <span
-                              v-else
-                              class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800"
-                            >
-                              Pending
+                              {{ appointment.status }}
                             </span>
                           </td>
                           <td class="text-sm text-center font-medium px-6">
-                            {{ apply.phone }}
+                            {{ appointment.patient.name }}
                           </td>
                           <td
                             class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
@@ -107,7 +103,10 @@ import moment from "moment";
                             {{
                               moment(
                                 new Date(
-                                  parseInt(apply._id.substring(0, 8), 16) * 1000
+                                  parseInt(
+                                    appointment._id.substring(0, 8),
+                                    16
+                                  ) * 1000
                                 )
                               ).format("DD/MM/YYYYY")
                             }}
@@ -118,7 +117,7 @@ import moment from "moment";
                             <button
                               class="p-3 mx-1 rounded-lg hover:bg-indigo-600 hover:text-white text-gray-400"
                               type="button"
-                              @click="approveModel(apply._id)"
+                              @click="approveModel(appointment._id)"
                             >
                               <svg viewBox="0 0 512 512" style="width: 1em">
                                 <path
@@ -131,7 +130,7 @@ import moment from "moment";
                             <button
                               class="p-3 mx-1 rounded-lg hover:bg-indigo-600 hover:text-white text-gray-400"
                               type="button"
-                              @click="downloadModel(apply._id)"
+                              @click="downloadModel(appointment._id)"
                             >
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +184,7 @@ export default {
         },
       })
       .then((res) => {
-        this.appointments = res.data.map((el) => el.applies).flat();
+        this.appointments = res.data;
       });
   },
   data: () => ({

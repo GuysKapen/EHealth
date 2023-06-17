@@ -33,11 +33,23 @@ exports.delete = function (req, res) {
   });
 };
 
-exports.list = function(req, res) {
-  const query = Object.assign({ docId: req.params.docId }, request.getFilteringOptions(req, ['name']));
-  Appointment.paginate(query, request.getRequestOptions(req), function(err, result) {
+exports.list = function (req, res) {
+  const query = Object.assign({ doctor: req.params.doctorId }, request.getFilteringOptions(req, ['name']));
+  Appointment.find(query).populate([
+    {
+      path: "patient",
+      populate: {
+        path: "profile",
+      },
+    },
+    {
+      path: "doctor",
+      populate: {
+        path: "profile",
+      },
+    },
+  ]).exec(function (err, result) {
     if (err) return response.sendNotFound(res);
-    pagination.setPaginationHeaders(res, result);
-    res.json(result.docs);
-  });
+    res.json(result);
+  })
 };
