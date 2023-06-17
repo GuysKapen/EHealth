@@ -1,35 +1,30 @@
 import mongoose from 'mongoose';
 import response from '../../helpers/response';
 import request from '../../helpers/request';
-import pagination from '../../helpers/pagination';
 
 import _ from 'underscore';
 
 const Appointment = mongoose.model('Appointment');
 
 exports.list = function (req, res) {
-  if (!req.currentUser.canRead(req.locals.user)) return response.sendForbidden(res);
-  const query = Object.assign({ owner: req.params.userId }, request.getFilteringOptions(req, ['name']));
-  Appointment.paginate(query, Object.assign(request.getRequestOptions(req), {
-    populate: [{
+  const query = Object.assign({ patient: req.params.userId }, request.getFilteringOptions(req, ['name']));
+  Appointment.find(query).populate([
+    {
+      path: "patient",
       populate: {
-        path: "patient",
-        populate: {
-          path: "profile",
-        },
+        path: "profile",
       },
+    },
+    {
+      path: "doctor",
       populate: {
-        path: "doctor",
-        populate: {
-          path: "profile",
-        },
+        path: "profile",
       },
-    },]
-  }), function (err, result) {
+    },
+  ]).exec(function (err, result) {
     if (err) return response.sendNotFound(res);
-    pagination.setPaginationHeaders(res, result);
-    res.json(result.docs);
-  });
+    res.json(result);
+  })
 };
 
 exports.create = function (req, res) {

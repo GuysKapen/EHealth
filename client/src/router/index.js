@@ -99,6 +99,7 @@ import UserAnswerView from "@/views/user/answer/View.vue";
 import UserEditAnswerView from "@/views/user/answer/EditView.vue";
 import UserCommentView from "@/views/user/comment/View.vue";
 import UserEditCommentView from "@/views/user/comment/EditView.vue";
+import UserAppointmentView from "@/views/user/appointment/View.vue";
 
 import ChatView from "@/views/ChatView.vue";
 
@@ -591,6 +592,11 @@ const router = createRouter({
           path: "comments/:id/edit",
           name: "user-comment-edit",
           component: UserEditCommentView,
+        },
+        {
+          path: "appointments",
+          name: "user-appointment-index",
+          component: UserAppointmentView,
         },
       ],
     },
