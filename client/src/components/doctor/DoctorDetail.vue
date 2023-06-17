@@ -12,14 +12,14 @@ import moment from "moment";
       <div
         class="flex-grow flex justify-between bg-white rounded-md shadow-lg px-8 py-6"
       >
-        <div class="w-5/12 relative">
+        <div class="w-4/12 relative">
           <img
             :src="imgUrlFor(serverUrl, doctor.profile?.cover)"
             alt="profile"
             class="rounded-lg absolute -top-20 flex-shrink-0 object-cover aspect-[9/11]"
           />
         </div>
-        <div class="flex w-6/12">
+        <div class="flex w-7/12">
           <div class="flex-grow pr-8">
             <div class="flex justify-between items-center">
               <h3 class="text-xl font-bold text-gray-800">
@@ -61,14 +61,14 @@ import moment from "moment";
             @click="toggleApplyForm(true)"
             class="bg-indigo-700 hover:bg-indigo-800 cursor-pointer text-white font-black text-xs px-4 py-3 text-center rounded-md mt-4"
           >
-            Apply Now
+            Schedule Now
           </div>
           <div
             class="bg-indigo-200 text-gray-800 font-black text-xs px-4 py-3 text-center rounded-md mt-4"
           >
             Subcribe for updates
           </div>
-          <p class="text-sm mt-4">Already applied?</p>
+          <p class="text-sm mt-4">Already scheduled?</p>
         </div>
 
         <div
@@ -80,7 +80,7 @@ import moment from "moment";
             @click="toggleLoginForm()"
             class="bg-indigo-700 hover:bg-indigo-800 cursor-pointer text-white font-black text-xs px-4 py-3 text-center rounded-md mt-4"
           >
-            Login to Apply
+            Login to Schedule
           </div>
           <div
             class="bg-indigo-200 text-gray-800 font-black text-xs px-4 py-3 text-center rounded-md mt-4"
@@ -174,80 +174,46 @@ import moment from "moment";
               <h3
                 class="mb-4 text-base font-black text-gray-900 dark:text-white"
               >
-                Apply to {{ doctor.name }}
+                Schedule appointment with {{ doctor.name }}
               </h3>
               <form class="space-y-6" @submit.prevent="add()">
                 <div>
                   <label
                     for="email"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >Your phone</label
+                    >Datetime</label
                   >
                   <input
-                    type="phone"
-                    name="phone"
-                    id="phone"
-                    v-model="phone"
+                    type="datetime-local"
+                    name="datetime"
+                    id="datetime"
+                    v-model="datetime"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    placeholder="+09 ..."
-                    required=""
+                    placeholder="02/12/2023"
+                    required="true"
                   />
                 </div>
-                <div class="mt-8">
-                  <label class="block text-sm font-semibold"> File </label>
-                  <div
-                    class="mt-1 flex-col justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
+                <div class="mt-2">
+                  <label
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                   >
-                    <div class="space-y-1 text-center">
-                      <svg
-                        class="mx-auto h-12 w-12 text-gray-400"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 48 48"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </svg>
-                      <div class="flex text-sm text-gray-600 justify-center">
-                        <label
-                          for="cover"
-                          class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
-                        >
-                          <span>Upload a file</span>
-                          <input
-                            id="cover"
-                            name="cover"
-                            type="file"
-                            class="sr-only"
-                            v-on:change="onFileSelected($event)"
-                          />
-                        </label>
-                        <p class="pl-1">or drag and drop</p>
-                      </div>
-                      <p class="text-xs text-gray-500">DOC, PDF up to 10MB</p>
-                    </div>
-                    <div
-                      class="flex items-center mt-4"
-                      v-if="selectedFile != null"
-                    >
-                      <span class="material-icons text-sm">description</span>
-                      <p class="text-xs text-gray-500 ml-3">
-                        {{ this.selectedFile.name }}
-                      </p>
-                    </div>
-                  </div>
+                    Description
+                  </label>
+                  <textarea
+                    class="string w-full required block px-4 py-2 rounded-lg font-medium border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:shadow-md focus:border-gray-400 focus:bg-white"
+                    placeholder="Description"
+                    name="description"
+                    id="description"
+                    v-model="description"
+                    rows="6"
+                  ></textarea>
                 </div>
 
                 <button
                   type="submit"
                   class="w-full text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                  Apply
+                  Schedule
                 </button>
               </form>
             </div>
@@ -277,9 +243,8 @@ export default {
     doctor: null,
     addingAnswer: false,
     showApplyForm: false,
-    selectedFile: null,
-    phone: null,
-    cv: null,
+    datetime: null,
+    description: null,
   }),
   async mounted() {
     const docStore = useDoctorStore();
@@ -301,76 +266,40 @@ export default {
     toggleApplyForm(show) {
       this.showApplyForm = show;
     },
-    toggleLoginForm(show) {
+    toggleLoginForm() {
       useAuthStore().showLoginForm(function () {});
     },
-    onFileSelected(e) {
-      const selectedFile = e.target.files[0];
-      // uploading asset to sanity
-      if (
-        selectedFile.type === "application/pdf" ||
-        selectedFile.type === "application/msword" ||
-        selectedFile.type ===
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-      ) {
-        this.selectedFile = selectedFile;
-      } else {
-        console.log("Wrong file type");
-      }
-    },
-
     async add() {
       const authStore = useAuthStore();
 
       this.error = "";
-      if (!this.phone) {
-        this.error = "Please enter name";
+      if (!this.datetime) {
+        this.error = "Please enter datetime";
         return;
       }
       const newModel = {
-        phone: this.phone,
-        cv: this.cv,
-        recruitment: this.doctor._id,
+        datetime: this.datetime,
+        description: this.description,
+        doctorId: this.doctor._id,
       };
-
-      try {
-        let res;
-        if (this.selectedFile != null) {
-          const form = new FormData();
-          form.append("file", this.selectedFile);
-          res = await axios.post(
-            `${serverUrl}/users/${authStore.user._id}/uploads/file`,
-            form,
-            {
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${authStore.token}`,
-                "x-access-token": authStore.token,
-              },
-            }
-          );
-          this.cv = res.data.data.name;
-        }
-
-        newModel.cv = this.cv;
-        axios
-          .post(`${serverUrl}/users/${authStore.user._id}/applies`, newModel, {
+      axios
+        .post(
+          `${serverUrl}/users/${authStore.user._id}/appointments`,
+          newModel,
+          {
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${authStore.token}`,
               "x-access-token": authStore.token,
             },
-          })
-          .then(() => {
-            createToast("Success apply for the recruitment", {
-              type: "success",
-            });
-            this.showApplyForm = false;
+          }
+        )
+        .then(() => {
+          createToast(`Success appoint with doctor ${this.doctor.name}`, {
+            type: "success",
           });
-      } catch (error) {
-        console.error("Add apply", error);
-        createToast("Failed to apply!", { type: "error" });
-      }
+          this.showApplyForm = false;
+        });
     },
   },
   computed: {

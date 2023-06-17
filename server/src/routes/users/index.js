@@ -10,6 +10,7 @@ import uploads from './uploads';
 import profiles from './profiles';
 import userDetails from './user_details';
 import applies from './applies';
+import appointments from './appointments';
 import save from './save';
 import answers from './answers';
 import conversations from './conversations';
@@ -29,6 +30,7 @@ routes.use('/:userId/save', users.loadUser, save);
 routes.use('/:userId/answers', users.loadUser, answers);
 routes.use('/:userId/conversations', users.loadUser, conversations);
 routes.use('/:userId/companies', users.loadUser, companies);
+routes.use('/:userId/appointments', users.loadUser, appointments);
 
 routes.route('/:id')
   .all(auth.verifyToken)
