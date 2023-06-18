@@ -91,6 +91,7 @@ import RecruiterApplyView from "@/views/recruiter/apply/View.vue";
 
 import DoctorView from "@/views/doctor/View.vue";
 import DoctorAppointmentView from "@/views/doctor/appointment/View.vue";
+import DoctorDashboardView from "@/views/doctor/dashboard/View.vue";
 
 import UserView from "@/views/user/View.vue";
 import UserPostView from "@/views/user/post/View.vue";
@@ -545,6 +546,11 @@ const router = createRouter({
       component: DoctorView,
       beforeEnter: [isDoctor],
       children: [
+        {
+          path: "dashboard",
+          name: "doctor-dashboard",
+          component: DoctorDashboardView,
+        },
         {
           path: "appointments",
           name: "doctor-appointment-index",
